@@ -27,7 +27,7 @@ foreach (scandir($path) as $f) {
 
     $fullPath = $path . "/" . $f;
 
-    if (in_array($ext, ['webm'])) {
+    if (in_array($ext, ['mp4'])) {
         if (str_starts_with($f, 'final_')) {
             $completed[] = $f;
         }

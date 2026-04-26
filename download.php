@@ -10,7 +10,7 @@ if (!is_dir($path)) {
     die("Project not found");
 }
 
-$allowedExt = ['webm', 'subtitle'];
+$allowedExt = ['mp4', 'subtitle'];
 
 $files = array_values(array_filter(scandir($path), function($f) use ($allowedExt) {
     $ext = strtolower(pathinfo($f, PATHINFO_EXTENSION));
@@ -82,12 +82,12 @@ $files = array_values(array_filter(scandir($path), function($f) use ($allowedExt
                 ?>
                     <div class="file-card glow">
 
-                    <?php if ($ext === 'webm'): ?>
+                    <?php if ($ext === 'mp4'): ?>
                         <!-- VIDEO THUMBNAIL -->
                         <video class="thumb"
                                preload="metadata"
                                onclick="openModal('<?php echo $filePath; ?>', '<?php echo htmlspecialchars($file); ?>')">
-                            <source src="<?php echo $filePath; ?>#t=1" type="video/webm">
+                            <source src="<?php echo $filePath; ?>#t=1" type="video/mp4">
                         </video>
 
                     <?php elseif ($ext === 'subtitle'): ?>

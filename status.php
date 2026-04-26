@@ -134,7 +134,7 @@ function updateProgress() {
 
                     card.innerHTML = `
                         <video class="thumb" preload="metadata">
-                            <source src="projects/${project}/${file}#t=1" type="video/webm">
+                            <source src="projects/${project}/${file}#t=1" type="video/mp4">
                         </video>
                         <p>${file}</p>
                     `;
@@ -149,7 +149,7 @@ function updateProgress() {
 
                     card.innerHTML = `
                         <video class="thumb" preload="metadata">
-                            <source src="projects/${project}/${file}#t=1" type="video/webm">
+                            <source src="projects/${project}/${file}#t=1" type="video/mp4">
                         </video>
                         <p>${file}</p>
                     `;

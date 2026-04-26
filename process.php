@@ -54,7 +54,7 @@ $scriptContent = "#!/bin/bash\n\n";
 // ======================
 // STEP 1: PARALLEL DOWNLOAD
 // Download start-10 detik sampai end
-// Output selalu .webm
+// Output selalu .mp4
 // Best video + best audio
 // ======================
 foreach ($starts as $i => $start) {
@@ -68,11 +68,11 @@ foreach ($starts as $i => $start) {
     $baseName = "{$projectPath}/clip_" . ($i + 1);
 
     $scriptContent .= "
-yt-dlp_linux --cookies cookies.txt --user-agent \"Mozilla/5.0\" --sleep-interval 3 --max-sleep-interval 6 \\
--f \"bestvideo[ext=webm]+bestaudio[ext=webm]/best[ext=webm]\" \\
---merge-output-format webm \\
+yt-dlp --cookies cookies.txt --user-agent \"Mozilla/5.0\" --sleep-interval 3 --max-sleep-interval 6 \\
+-f \"bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]\" \\
+--merge-output-format mp4 \\
 --download-sections \"*{$downloadStart}-{$end}\" \\
--o \"{$baseName}.webm\" \\
+-o \"{$baseName}.mp4\" \\
 \"{$cleanUrl}\" \\
 > /dev/null 2>&1 &
 ";
@@ -93,10 +93,10 @@ foreach ($starts as $i => $start) {
     $scriptContent .= "
 ffmpeg -y \\
     -ss 10 \\
-    -i \"{$baseName}.webm\" \\
-    -c copy \\
-    -f webm \"{$baseName}.webm.part\" \\
-&& rm \"{$baseName}.webm\" && mv \"{$baseName}.webm.part\" \"{$projectPath}/final_clip_" . ($i+1) . ".webm\"
+    -i \"{$baseName}.mp4\" \\
+    -c:v libx264 -c:a aac \\
+    -f mp4 \"{$baseName}.mp4.part\" \\
+&& rm \"{$baseName}.mp4\" && mv \"{$baseName}.mp4.part\" \"{$projectPath}/final_clip_" . ($i+1) . ".mp4\"
 ";
 }
 
