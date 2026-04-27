@@ -68,7 +68,7 @@ foreach ($starts as $i => $start) {
     $baseName = "{$projectPath}/clip_" . ($i + 1);
 
     $scriptContent .= "
-yt-dlp --cookies cookies.txt --user-agent \"Mozilla/5.0\" --sleep-interval 3 --max-sleep-interval 6 \\
+yt-dlp --cookies cookies.txt --user-agent \"Safari/537.36\" --sleep-interval 3 --max-sleep-interval 6 \\
 -f \"bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]\" \\
 --merge-output-format mp4 \\
 --download-sections \"*{$downloadStart}-{$end}\" \\
